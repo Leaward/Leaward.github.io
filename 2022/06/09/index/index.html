@@ -43,7 +43,29 @@
           font-size: 1.6rem;
         }
       </style>
-    </head>
+	  <script type="text/javascript">
+	  // 浏览器搞笑标题
+	  var OriginTitle = document.title;
+	  var titleTime;
+	  document.addEventListener('visibilitychange', function () {
+	  	if (location.href != "https://www.xxxzhy.com/"){//主页不变
+	  		if (document.hidden) {
+	  			//$('[rel="icon"]').attr('href', "/funny.ico");
+	  			document.title = '/(ㄒoㄒ)/你弄丢了格格😔';
+	  			clearTimeout(titleTime);
+	  		}else {
+	  			//$('[rel="icon"]').attr('href', "/favicon.ico");
+	  			document.title = '(ฅ>ω<*ฅ) 噫又好啦~' + OriginTitle;
+	  			titleTime = setTimeout(function () {
+	  				document.title = OriginTitle;
+	  			}, 2000);
+	  		}
+	  	}
+	  });
+	  </script>
+
+    <link rel="alternate" href="/atom.xml" title="格" type="application/atom+xml">
+</head>
   </html>
 </html>
 
@@ -51,6 +73,17 @@
 <body>
   <div id="app">
     
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
       
     <main class="content on">
       <section class="outer">
@@ -337,11 +370,13 @@
 <script src="/js/busuanzi-2.3.pure.min.js"></script>
  
 <!-- ClickLove -->
- 
-<script src="/js/clickLove.js"></script>
- 
+
 <!-- ClickBoom1 -->
 
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
 <!-- ClickBoom2 -->
 
 <!-- CodeCopy -->
